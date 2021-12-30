@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
@@ -7,7 +6,6 @@ public class StartGame {
 
     public static int[][] place2 = new int[11][30];
     public static boolean[] cellCheck = {false, false, false, false, false, false, false, false, false, false};
-    public static int X1, X2, X3, X4, X5;
 
 
     public static void main(String[] args) {
@@ -44,7 +42,6 @@ public class StartGame {
 
     public static void computerMedium() {
         int cell = 3;
-        int fistStageX;
         int[] arr = {0, place2[1][5], place2[5][5], place2[9][5], place2[1][15], place2[5][15], place2[9][15], place2[1][24], place2[5][24], place2[9][24]};
         List<Integer> stage = new ArrayList<>();
         for (int i = 1; i < 10; i++) {
@@ -98,14 +95,6 @@ public class StartGame {
         push(cell, false);
     }
 
-    public static void computer() {
-        int r = Rnd.getInt(1, 9);
-        while (cellCheck[r]) {
-            r = Rnd.getInt(1, 9);
-        }
-        push(r, false);
-    }
-
     public static boolean checkWin() {
         int[] arr = {0, place2[1][5], place2[5][5], place2[9][5], place2[1][15], place2[5][15], place2[9][15], place2[1][24], place2[5][24], place2[9][24]};
         if ((arr[1] + arr[2] + arr[3] == 9) ||
@@ -118,7 +107,6 @@ public class StartGame {
                 (arr[3] + arr[5] + arr[7] == 9)
         ) {
             System.out.println("Поздравляю с победой !! ");
-            //CristmasTree.christmasTree();
             return true;
         } else if (
                 (arr[1] + arr[2] + arr[3] == 12) ||
