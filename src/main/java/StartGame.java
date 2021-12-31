@@ -9,6 +9,8 @@ public class StartGame {
 
 
     public static void main(String[] args) {
+
+
         System.out.println("Игра крестики и нолики");
         System.out.println("Вы начинаете первым");
         initializePlace();
@@ -16,9 +18,12 @@ public class StartGame {
         System.out.print("Введите цифру в какую ячейку поставить \"Х\" :");
         Scanner sc = new Scanner(System.in);
         while (sc.hasNext()) {
-
+            if (checkWin()) {
+                return;
+            }
             push(selectCell(sc), true);
-            computerMedium();
+            //computerMedium();
+            push(new ComputerAI(place2, cellCheck).computerMedium(), false);
             drawPlace();
             if (checkWin()) {
                 return;
@@ -120,7 +125,7 @@ public class StartGame {
         ) {
             System.out.println("Компютер выйграл!! ");
             return true;
-        } else if (cellCheck[1] && cellCheck[2] && cellCheck[3] && cellCheck[4] && cellCheck[5] && cellCheck[6] && cellCheck[7] && cellCheck[8] && cellCheck[9]) {
+        } else if (arr[1] + arr[2] + arr[3] + arr[4] + arr[5] + arr[6] + arr[7] + arr[8] + arr[9] > 30) {
             System.out.println("Ничья!!");
             return true;
         }
